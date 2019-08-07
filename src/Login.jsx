@@ -52,12 +52,14 @@ class UnconnectedLogin extends Component {
               placeholder="Username"
               autoFocus
               onChange={this.handleUsernameChange}
+              required
             />
 
             <input
               type="password"
               placeholder="Password"
               onChange={this.handlePasswordChange}
+              required
             />
           </div>
           <input type="submit" className="myButton" value="Login " />

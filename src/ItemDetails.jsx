@@ -1,29 +1,66 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import StripeCheckout from 'react-stripe-checkout';
+
+class TakeMoney extends React.Component {
+  onToken = (token) => {
+    fetch('/save-stripe-token', {
+      method: 'POST',
+      body: JSON.stringify(token),
+    }).then((response) => {
+      response.json().then((data) => {
+        alert(`We are in business, ${data.email}`);
+      });
+    });
+  };
+
+  render() {
+    return (
+      <StripeCheckout
+        name="Random Market"
+        description="Thanks for shopping with us!"
+        image="/images/background1.jpg"
+        ComponentClass="div"
+        panelLabel="Pay now"
+        // amount={item.cost}
+        currency="USD"
+        stripeKey="..."
+        shippingAddress={true}
+        billingAddress={true}
+        zipCode={false}
+        alipay={false}
+        bitcoin={true}
+        allowRememberMe
+        token={this.onToken}
+        opened={this.onOpened}
+        closed={this.onClosed}
+        reconfigureOnUpdate={false}
+        token={this.onToken}
+        stripeKey="pk_test_1i11Q1M0pvfAqP12iNAZab4r00PAIVKCjJ"
+      >
+        <button className="myPayButton">Buy now</button>
+      </StripeCheckout>
+    );
+  }
+}
 
 function ItemDetails(props) {
   const { item } = props;
-  // const reviews = item.reviews.map((reviewId) =>
-  //   initialReviews.find((review) => review.id === reviewId)
-  // );
 
   return item ? (
     <>
-      <div>Inventory left: {item.inventory}</div>
+      <div className="card center">
+        <img src={item.imageLocation} />{' '}
+      </div>
+      <div className="inventory">Inventory: {item.inventory} </div>
       <div>Description: {item.description}</div>
-      {/* {reviews.length > 0 && <div>Reviews:</div>}
-      <ul>
-        {reviews.map((review) => (
-          <li>
-            {review.content} -
-            <Link to={`/reviewer/${review.reviewerId}`}>Go to reviewer</Link>
-          </li>
-        ))}
-      </ul> */}
+      <div>
+        {' '}
+        <TakeMoney />
+      </div>
     </>
   ) : (
     <div>No item found</div>
   );
 }
 
-export default ItemDetails;
+export { ItemDetails, TakeMoney };

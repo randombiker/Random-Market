@@ -4,10 +4,10 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import Navbar from './Navbar.jsx';
-
-import { Item, TakeMoney } from './Item.jsx';
-import ItemDetails from './ItemDetails.jsx';
+import Item from './Item.jsx';
+import { ItemDetails } from './ItemDetails.jsx';
 import ItemForm from './ItemForm.jsx';
+import Footer from './Footer.jsx';
 
 const renderHome = (items, query) => {
   const filteredItems = items.filter((item) => {
@@ -36,35 +36,9 @@ const renderItemDetails = (routerData, items) => {
   return (
     <div className="sellForm">
       <ItemDetails item={item} />
-      <TakeMoney />
     </div>
   );
 };
-
-// class TakeMoney extends Component {
-//   onToken = (token) => {
-//     fetch('/save-stripe-token', {
-//       method: 'POST',
-//       body: JSON.stringify(token),
-//     }).then((response) => {
-//       response.json().then((data) => {
-//         alert(`We are in business, ${data.email}`);
-//       });
-//     });
-//   };
-
-//   // ...
-
-//   render() {
-//     return (
-//       // ...
-//       <StripeCheckout
-//         token={this.onToken}
-//         stripeKey="pk_test_1i11Q1M0pvfAqP12iNAZab4r00PAIVKCjJ"
-//       />
-//     );
-//   }
-// }
 
 class App extends Component {
   constructor(props) {
@@ -130,6 +104,7 @@ class App extends Component {
             </>
           )}
         </div>
+        <Footer />
       </BrowserRouter>
     );
   }

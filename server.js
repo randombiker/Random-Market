@@ -73,10 +73,10 @@ const generateId = () => {
 app.post('/signup', upload.none(), (req, res) => {
   const username = req.body.username;
   const enteredPassword = req.body.password;
-  if (passwords[username]) {
+  if (passwords[username] || !username || !enteredPassword) {
     return res.send({
       success: false,
-      // message: message,
+      message: passwords[username] ? 'Username taken' : 'Invalid input',
     });
   }
   passwords[username] = enteredPassword;

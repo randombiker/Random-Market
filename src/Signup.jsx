@@ -27,8 +27,7 @@ class Signup extends Component {
       credentials: 'same-origin',
     });
     const body = await response.json();
-    if (!body.success)
-      return swal('Oops...', 'Username already taken!', 'error');
+    if (!body.success) return swal('Oops...', body.message, 'error');
     this.props.dispatch({
       type: 'LOGIN_SUCCESS',
       username: this.state.username,
@@ -45,12 +44,14 @@ class Signup extends Component {
               placeholder="Username"
               autoFocus
               onChange={this.handleUsernameChange}
+              required
             />
 
             <input
               type="password"
               placeholder="Password"
               onChange={this.handlePasswordChange}
+              required
             />
           </div>
           <input type="submit" className="myButton" value="Signup" />

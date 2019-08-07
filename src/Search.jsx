@@ -7,22 +7,22 @@ class UnconnectedSearch extends Component {
   }
 
   handleQuery = (evt) => {
-    this.props.dispatch({ type: 'query', q: evt.target.value });
+    this.props.dispatch({ type: 'QUERY', q: evt.target.value });
   };
   handleMinimumPrice = (evt) => {
     const price = parseInt(evt.target.value) || 0;
-    this.props.dispatch({ type: 'minimum-price', price: price });
+    this.props.dispatch({ type: 'MINIMUM-PRICE', price: price });
   };
   handleMaximumPrice = (evt) => {
     const price = parseInt(evt.target.value) || 0;
-    this.props.dispatch({ type: 'maximum-price', price: price });
+    this.props.dispatch({ type: 'MAXIMUM-PRICE', price: price });
   };
 
   handleClear = () => {
-    this.props.dispatch({ type: 'clear' });
+    this.props.dispatch({ type: 'CLEAR' });
   };
   handleAdvancedSearch = () => {
-    this.props.dispatch({ type: 'advanced-search' });
+    this.props.dispatch({ type: 'ADVANCED-SEARCH' });
   };
   render() {
     return (

@@ -11,7 +11,6 @@ class UnconnectedSearchResults extends Component {
         item.price >= this.props.minPrice &&
         item.price <= this.props.maxPrice
       );
-      // // item.inStock === this.props.inStock
     });
     return (
       <div className="wrapper">
@@ -28,7 +27,6 @@ const mapStateToProps = (state) => {
     minPrice: state.min,
     maxPrice: state.max,
     items: state.items,
-    // inStock: state.inStock,
   };
 };
 const SearchResults = connect(mapStateToProps)(UnconnectedSearchResults);

@@ -36,13 +36,6 @@ class ItemForm extends Component {
     this.props.history.replace('/');
   };
 
-  // handleFieldChange = (evt, field) => {
-  //   this.setState({ [field]: evt.target.value });
-  // };
-  // This is an alternative to avoid repeating the logic. Not necessary in this simple application
-  // Usage example: onChange={(evt) => this.handleFieldChange(evt, 'description')}
-  // Caveat: We end up creating a new function every render
-
   handleNameChange = (evt) => {
     this.setState({ name: evt.target.value });
   };
@@ -89,7 +82,6 @@ class ItemForm extends Component {
               <input
                 type="text"
                 placeholder="Description"
-                // className="inputs"
                 onChange={this.handleDescriptionChange}
                 value={this.state.description}
               />
@@ -122,7 +114,6 @@ class ItemForm extends Component {
               <input
                 type="text"
                 placeholder="Inventory"
-                // type="number"
                 onChange={this.handleInventoryChange}
                 value={this.state.inventory}
               />

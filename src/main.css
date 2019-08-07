@@ -33,7 +33,6 @@ header.nav {
   top: 200px;
   left: 200px;
   right: 200px;
-  /* background-color: white; */
 }
 
 @media screen and (max-width: 866px) {
@@ -52,6 +51,18 @@ header.nav {
   .topnav input[type='text'] {
     border: 1px solid #ccc;
   }
+  .sellForm {
+    padding: 25px;
+    box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.4),
+      0px 4px 20px rgba(0, 0, 0, 0.33);
+    border-radius: 5px;
+    display: table;
+    position: static;
+    margin-left: 13%;
+    margin-top: 10%;
+
+    margin-right: 13%;
+  }
 }
 
 .top {
@@ -60,9 +71,7 @@ header.nav {
 
 .signupLogin {
   display: grid;
-
   color: #3f54b1;
-  /* text-align: center; */
   grid-column: 2 / 7;
   grid-row: 2 / 5;
 }
@@ -118,11 +127,8 @@ header.nav {
 
 #signup {
   padding: 0px 25px 25px;
-  /* background: #3f54b1; */
   box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.4),
     0px 4px 20px rgba(0, 0, 0, 0.33);
-  /* -moz-border-radius: 5px;
-  -webkit-border-radius: 5px; */
   border-radius: 5px;
   display: table;
   position: static;
@@ -169,16 +175,14 @@ header.nav {
 
 .sellForm {
   padding: 25px;
-  /* background: #3f54b1; */
   box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.4),
     0px 4px 20px rgba(0, 0, 0, 0.33);
-  /* -moz-border-radius: 5px;
-  -webkit-border-radius: 5px; */
   border-radius: 5px;
   display: table;
   position: static;
   margin-left: 13%;
   margin-top: 10%;
+  margin-right: 50%;
 }
 
 .sellForm .inputs label {
@@ -195,8 +199,6 @@ input[type='textarea'] {
   resize: vertical;
   background: #8f8f8f33;
   font-size: 0.8rem;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   border: none;
   padding: 13px 10px;
@@ -210,20 +212,10 @@ input[type='textarea'] {
   color: whitesmoke;
 }
 
-/* input::-webkit-input-placeholder {
-  color: #b5b5b5;
-}
-
-input:-moz-placeholder {
-  color: #b5b5b5;
-} */
-
 #signup .inputs input[type='text'],
 input[type='password'] {
   background: #8f8f8f33;
   font-size: 0.8rem;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
   border-radius: 3px;
   border: none;
   padding: 13px 10px;
@@ -241,20 +233,6 @@ input[type='password']:focus {
   outline: none;
 }
 
-/* #signup .inputs .checkboxy {
-  display: block;
-  position: static;
-  height: 25px;
-  margin-top: 10px;
-  clear: both;
-}
-
-#signup .inputs input[type='checkbox'] {
-  float: left;
-  margin-right: 10px;
-  margin-top: 3px;
-} */
-
 #signup .inputs label.terms {
   float: left;
   font-size: 14px;
@@ -271,22 +249,8 @@ input[type='password']:focus {
   letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
-  background: -moz-linear-gradient(top, #b9c5dd 0%, #a4b0cb);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#b9c5dd),
-    to(#a4b0cb)
-  );
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
   border-radius: 5px;
   border: 1px solid #737b8d;
-  -moz-box-shadow: 0px 5px 5px rgba(000, 000, 000, 0.1),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.5);
-  -webkit-box-shadow: 0px 5px 5px rgba(000, 000, 000, 0.1),
-    inset 0px 1px 0px rgba(255, 255, 255, 0.5);
   box-shadow: 0px 5px 5px rgba(000, 000, 000, 0.1),
     inset 0px 1px 0px rgba(255, 255, 255, 0.5);
   text-shadow: 0px 1px 3px rgba(000, 000, 000, 0.3),
@@ -296,41 +260,13 @@ input[type='password']:focus {
   clear: both;
 }
 
-#signup .inputs #submit:hover {
-  background: -moz-linear-gradient(top, #a4b0cb 0%, #b9c5dd);
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#a4b0cb),
-    to(#b9c5dd)
-  );
-}
-
 /* signup/login button */
 
 .myButton {
   margin-left: 7px;
-  /* margin-right: 7px; */
-  /* -moz-box-shadow: inset 0px 2px 0px 0px #fce2c1;
-  -webkit-box-shadow: inset 0px 2px 0px 0px #fce2c1; */
   box-shadow: inset 0px 2px 0px 0px #fce2c1;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0.05, #ffc477),
-    color-stop(1, #fb9e25)
-  );
-  background: -moz-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
-  background: -webkit-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
-  background: -o-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
-  background: -ms-linear-gradient(top, #ffc477 5%, #fb9e25 100%);
   background: linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25',GradientType=0);
   background-color: #ffc477;
-  /* -moz-border-radius: 8px;
-  -webkit-border-radius: 8px; */
   border-radius: 4px;
   border: 1px solid #eeb44f;
   display: inline-block;
@@ -344,19 +280,7 @@ input[type='password']:focus {
   text-shadow: 0px 2px 0px #cc9f52;
 }
 .myButton:hover {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0.05, #fb9e25),
-    color-stop(1, #ffc477)
-  );
-  background: -moz-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
-  background: -webkit-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
-  background: -o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
-  background: -ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
   background: linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
   background-color: #fb9e25;
 }
 .myButton:active {
@@ -407,15 +331,8 @@ input[type='password']:focus {
   border: dimgrey;
   border-radius: 5px;
   margin-bottom: 5px;
-  /* background: hsla(229, 76%, 75%, 0.1); */
   box-shadow: 2px 2px 2px 0px rgba(13, 4, 138, 0.918),
     0px 4px 20px rgba(0, 0, 0, 0.33);
-  /* -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  
-  display: table;
-  position: static;
-  /* height: 10px; */
   width: 170px;
   float: right;
   margin-right: 20px;
@@ -426,8 +343,6 @@ textarea {
   color: black;
   font-size: 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* font-weight: bold; */
-  /* outline: none; */
 }
 
 .searchArea {
@@ -458,7 +373,6 @@ textarea {
   position: absolute;
   left: 0;
   top: 0;
-
   opacity: 0;
 }
 
@@ -490,13 +404,11 @@ span {
   padding: 3px 9px;
   text-decoration: none;
   text-shadow: 0px 2px 0px #cc9f52;
+  margin-top: 15px;
 }
 
 .myPayButton:hover {
-  background: -o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
-  background: -ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
   background: linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
   background-color: #fb9e25;
 }
 .myPayButton:active {
@@ -506,4 +418,18 @@ span {
 
 .myPayButton:focus {
   outline: 0;
+}
+
+.inventory {
+  color: rgb(4, 117, 4);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to right, #c3c9ce75, #323d47);
+  position: fixed;
+  bottom: 0;
 }
