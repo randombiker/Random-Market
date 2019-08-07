@@ -1,6 +1,6 @@
 const items = [
   {
-    description: 'Boat',
+    description: 'a beautifull Boat capable of floating. on the water, yes',
     price: 10000,
     image: '/boat.png',
     id: 'asewq',

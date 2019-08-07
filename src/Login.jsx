@@ -43,7 +43,7 @@ class UnconnectedLogin extends Component {
   };
   render = () => {
     return (
-      <div className="container">
+      <div className="container auth-card">
         <form id="signup" onSubmit={this.handleSubmit}>
           <div className="sep" />
           <div className="inputs">

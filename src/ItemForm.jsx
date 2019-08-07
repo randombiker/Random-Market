@@ -9,8 +9,8 @@ class ItemForm extends Component {
       image: null,
       name: '',
       description: '',
-      price: 'Price',
-      inventory: 'Inventory',
+      price: '',
+      inventory: '',
     };
   }
   handleAddItem = async () => {
@@ -21,7 +21,7 @@ class ItemForm extends Component {
     formData.append('description', this.state.description);
     formData.append('price', this.state.price);
     formData.append('inventory', this.state.inventory);
-    const response = await fetch('/sell', {
+    const response = await fetch('/newListing', {
       method: 'POST',
       body: formData,
       credentials: 'include',
@@ -32,6 +32,8 @@ class ItemForm extends Component {
       type: 'ADD_ITEM',
       item: responseBody.item,
     });
+
+    this.props.history.replace('/');
   };
 
   // handleFieldChange = (evt, field) => {
@@ -58,20 +60,13 @@ class ItemForm extends Component {
   };
 
   handleInventoryChange = (evt) => {
-    this.setState({ inventory: Number(evt.target.value) });
+    this.setState({ inventory: evt.target.value });
   };
 
   handleSubmit = (evt) => {
     evt.preventDefault();
 
     this.handleAddItem();
-
-    // Reset form on submission
-    this.setState({
-      image: '',
-      description: '',
-      price: '',
-    });
   };
 
   render() {
@@ -92,9 +87,9 @@ class ItemForm extends Component {
           <div>
             <label>
               <input
-                type="textarea"
+                type="text"
                 placeholder="Description"
-                className="inputs"
+                // className="inputs"
                 onChange={this.handleDescriptionChange}
                 value={this.state.description}
               />
@@ -103,7 +98,7 @@ class ItemForm extends Component {
           <div>
             <label>
               <input
-                type="number"
+                type="text"
                 placeholder="Price"
                 onChange={this.handlePriceChange}
                 value={this.state.price}

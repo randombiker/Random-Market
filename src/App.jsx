@@ -5,7 +5,7 @@ import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import Navbar from './Navbar.jsx';
 
-import Item from './Item.jsx';
+import { Item, TakeMoney } from './Item.jsx';
 import ItemDetails from './ItemDetails.jsx';
 import ItemForm from './ItemForm.jsx';
 
@@ -17,11 +17,13 @@ const renderHome = (items, query) => {
     <div className="container1">
       {filteredItems.map((item) => (
         <Item
+          name={item.name}
           cost={item.price}
           sellerId={item.sellerId}
           imageLocation={item.image}
           description={item.description}
           id={item.id}
+          inventory={item.inventory}
         />
       ))}
     </div>
@@ -31,8 +33,38 @@ const renderHome = (items, query) => {
 const renderItemDetails = (routerData, items) => {
   const itemId = routerData.match.params.itemId;
   const item = items.find((item) => item.id === itemId);
-  return <ItemDetails item={item} />;
+  return (
+    <div className="sellForm">
+      <ItemDetails item={item} />
+      <TakeMoney />
+    </div>
+  );
 };
+
+// class TakeMoney extends Component {
+//   onToken = (token) => {
+//     fetch('/save-stripe-token', {
+//       method: 'POST',
+//       body: JSON.stringify(token),
+//     }).then((response) => {
+//       response.json().then((data) => {
+//         alert(`We are in business, ${data.email}`);
+//       });
+//     });
+//   };
+
+//   // ...
+
+//   render() {
+//     return (
+//       // ...
+//       <StripeCheckout
+//         token={this.onToken}
+//         stripeKey="pk_test_1i11Q1M0pvfAqP12iNAZab4r00PAIVKCjJ"
+//       />
+//     );
+//   }
+// }
 
 class App extends Component {
   constructor(props) {
@@ -45,8 +77,8 @@ class App extends Component {
   renderHome = () => {
     return renderHome(this.props.items, this.props.query);
   };
-  renderSellPage = () => {
-    return <ItemForm />;
+  renderSellPage = (routerData) => {
+    return <ItemForm history={routerData.history} />;
   };
   renderItemDetails = (routerData) => {
     return renderItemDetails(routerData, this.props.items);
@@ -73,46 +105,36 @@ class App extends Component {
       return 'loading...';
     }
 
-    if (this.props.lgin) {
-      return (
-        <BrowserRouter>
-          <Navbar />
-
-          {/* <SearchResults /> */}
-
-          <div>
-            <Route exact={true} path="/" render={this.renderHome} />
-            <Route exact={true} path="/sell" component={this.renderSellPage} />
-            <Route
-              exact={true}
-              path="/details/:itemId"
-              render={this.renderItemDetails}
-            />
-          </div>
-          {/* 
-            <Route
-              exact={true}
-              path="/reviewer/:reviewerId"
-              render={renderReviewer}
-            /> */}
-        </BrowserRouter>
-      );
-    }
     return (
-      <div>
+      <BrowserRouter>
         <Navbar />
-        <h2 className="signupLogin ">
-          <div className="Login" />
-        </h2>
-        <Signup />
-        <h2 className="signupLogin">
-          <div className="Login" />
-        </h2>
-        <Login />
-      </div>
+        <div>
+          {this.props.lgin ? (
+            <>
+              <Route exact={true} path="/" render={this.renderHome} />
+              <Route
+                exact={true}
+                path="/newListing"
+                render={this.renderSellPage}
+              />
+              <Route
+                exact={true}
+                path="/details/:itemId"
+                render={this.renderItemDetails}
+              />
+            </>
+          ) : (
+            <>
+              <Signup />
+              <Login />
+            </>
+          )}
+        </div>
+      </BrowserRouter>
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return { lgin: state.loggedIn, query: state.searchQuery, items: state.items };
 };

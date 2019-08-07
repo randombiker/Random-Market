@@ -10,6 +10,7 @@ function ItemDetails(props) {
   return item ? (
     <>
       <div>Inventory left: {item.inventory}</div>
+      <div>Description: {item.description}</div>
       {/* {reviews.length > 0 && <div>Reviews:</div>}
       <ul>
         {reviews.map((review) => (

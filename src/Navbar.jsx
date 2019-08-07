@@ -13,10 +13,12 @@ function Navbar(props) {
   const { setLogout } = props;
   return (
     <div>
-      <div className="coupon">Free shipping for orders over $1.000.000!</div>
+      {/* <div className="coupon">Free shipping for orders over $1.000.000!</div> */}
       <AppBar className="nav" position="static">
         <Toolbar>
-          <img src="/images/logos.png" width="100px" height="70px" />
+          <Link to="/">
+            <img src="/images/logos.png" width="100px" height="70px" />
+          </Link>
 
           <Typography variant="h6" color="inherit" noWrap>
             <div className="logosize">
@@ -31,7 +33,7 @@ function Navbar(props) {
               </div>
 
               <div>
-                <Link className="myButton" to="/sell">
+                <Link className="myButton" to="/newListing">
                   Sell
                 </Link>
                 <button className="myButton" onClick={setLogout}>

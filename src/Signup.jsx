@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
 
 class Signup extends Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class Signup extends Component {
       credentials: 'same-origin',
     });
     const body = await response.json();
-    if (!body.success) return alert(body.message);
+    if (!body.success)
+      return swal('Oops...', 'Username already taken!', 'error');
     this.props.dispatch({
       type: 'LOGIN_SUCCESS',
       username: this.state.username,
@@ -34,7 +36,7 @@ class Signup extends Component {
   };
   render = () => {
     return (
-      <div className="container">
+      <div className="container auth-card">
         <form id="signup" onSubmit={this.handleSubmit}>
           <div className="sep" />
           <div className="inputs">

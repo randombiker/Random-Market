@@ -54,6 +54,10 @@ header.nav {
   }
 }
 
+.top {
+  margin-top: 10px;
+}
+
 .signupLogin {
   display: grid;
 
@@ -74,6 +78,8 @@ header.nav {
 }
 
 .coupon {
+  position: relative;
+  align-self: flex-start;
   background-color: black;
   color: white;
   width: 100%;
@@ -106,9 +112,8 @@ header.nav {
   margin: 0 13%;
 }
 
-.Login {
-  margin-left: 20%;
-  margin-top: 3%;
+.auth-card {
+  margin-top: 50px;
 }
 
 #signup {
@@ -464,4 +469,41 @@ textarea {
 
 .linkstyle :visited {
   color: red;
+}
+
+span {
+  display: none;
+  background-color: green;
+}
+
+.myPayButton {
+  box-shadow: inset 0px 2px 0px 0px #fce2c1;
+  background-color: #ffc477;
+  border-radius: 4px;
+  border: 1px solid #eeb44f;
+  display: inline-block;
+  cursor: pointer;
+  color: #3f54b1;
+  font-family: Verdana;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 9px;
+  text-decoration: none;
+  text-shadow: 0px 2px 0px #cc9f52;
+}
+
+.myPayButton:hover {
+  background: -o-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background: -ms-linear-gradient(top, #fb9e25 5%, #ffc477 100%);
+  background: linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477',GradientType=0);
+  background-color: #fb9e25;
+}
+.myPayButton:active {
+  position: relative;
+  top: 1px;
+}
+
+.myPayButton:focus {
+  outline: 0;
 }

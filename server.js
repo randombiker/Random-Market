@@ -18,7 +18,7 @@ app.use('/', express.static('public'));
 app.use('/images', express.static(__dirname + '/build/images'));
 
 class Item {
-  constructor(name, sellerId, description, img, price, inventory = 0) {
+  constructor(name, sellerId, description, img, price, inventory) {
     this.id = `${Math.floor(Math.random() * 1000000)}`;
     this.name = name;
     this.sellerId = sellerId;
@@ -71,12 +71,13 @@ const generateId = () => {
 };
 
 app.post('/signup', upload.none(), (req, res) => {
-  console.log("**** I'm in the signup endpoint");
-  console.log('this is the body', req.body);
   const username = req.body.username;
   const enteredPassword = req.body.password;
   if (passwords[username]) {
-    return res.send({ success: false, message: 'Username already taken' });
+    return res.send({
+      success: false,
+      // message: message,
+    });
   }
   passwords[username] = enteredPassword;
 
@@ -91,14 +92,23 @@ app.post('/signup', upload.none(), (req, res) => {
 // i'm sending from the front end the name, sellerid, description and image of a new item to sell,
 // then I push them in an empty object that I will add to the items from "data" using concat
 
-app.post('/sell', upload.single('image'), (req, res) => {
+app.post('/newListing', upload.single('image'), (req, res) => {
   console.log('body', req.body);
   const sessionId = req.cookies.sid;
   const username = sessions[sessionId];
   const description = req.body.description;
   const name = req.body.name;
+  const price = Number(req.body.price);
+  const inventory = Number(req.body.inventory);
   const imgPath = req.file ? `/images/${req.file.filename}` : '';
-  const newItemToSell = new Item(name, username, description, imgPath);
+  const newItemToSell = new Item(
+    name,
+    username,
+    description,
+    imgPath,
+    price,
+    inventory
+  );
 
   items.push(newItemToSell);
 
