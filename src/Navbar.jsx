@@ -13,12 +13,17 @@ function Navbar(props) {
       <AppBar className="nav" position="static">
         <Toolbar>
           <Link to="/">
-            <img src="/images/logos.png" width="100px" height="70px" />
+            <img
+              src="/images/mylogo.png"
+              width="90px"
+              height="70px"
+              onClick="goBack"
+            />
           </Link>
 
           <Typography variant="h6" color="inherit" noWrap>
             <div className="logosize">
-              <img src="/images/cooltext2.png" />
+              <img src="/images/textfx.png" />
             </div>
           </Typography>
 

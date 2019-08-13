@@ -1,15 +1,14 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import Item from './Item.jsx';
 
 class TakeMoney extends React.Component {
-  onToken = (token) => {
-    fetch('/save-stripe-token', {
+  onToken = async (token) => {
+    const formData = new FormData();
+    formData.append('item', JSON.stringify(this.props.item));
+    fetch('/checkout', {
       method: 'POST',
-      body: JSON.stringify(token),
-    }).then((response) => {
-      response.json().then((data) => {
-        alert(`We are in business, ${data.email}`);
-      });
+      body: formData,
     });
   };
 
@@ -18,14 +17,13 @@ class TakeMoney extends React.Component {
       <StripeCheckout
         name="Random Market"
         description="Thanks for shopping with us!"
-        image="/images/background1.jpg"
+        image="/images/mylogo.png"
         ComponentClass="div"
         panelLabel="Pay now"
-        // amount={item.cost}
+        amount={this.props.item.price * 100}
         currency="USD"
-        stripeKey="..."
-        shippingAddress={true}
-        billingAddress={true}
+        shippingAddress={false}
+        billingAddress={false}
         zipCode={false}
         alipay={false}
         bitcoin={true}
@@ -34,7 +32,6 @@ class TakeMoney extends React.Component {
         opened={this.onOpened}
         closed={this.onClosed}
         reconfigureOnUpdate={false}
-        token={this.onToken}
         stripeKey="pk_test_1i11Q1M0pvfAqP12iNAZab4r00PAIVKCjJ"
       >
         <button className="myPayButton">Buy now</button>
@@ -48,14 +45,20 @@ function ItemDetails(props) {
 
   return item ? (
     <>
-      <div className="card center">
-        <img src={item.imageLocation} />{' '}
+      <div>
+        <Item
+          id={item.id}
+          category={item.category}
+          price={item.price}
+          imageLocation={item.image}
+          showDetailsLink={false}
+        />
       </div>
       <div className="inventory">Inventory: {item.inventory} </div>
       <div>Description: {item.description}</div>
       <div>
         {' '}
-        <TakeMoney />
+        <TakeMoney item={item} />
       </div>
     </>
   ) : (

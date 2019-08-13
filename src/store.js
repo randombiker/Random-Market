@@ -4,8 +4,9 @@ const initialState = {
   loggedIn: false,
   username: '',
   searchQuery: '',
-  min: 0,
-  max: 0,
+  minPrice: '',
+  maxPrice: '',
+  category: '',
   advancedSearch: false,
   items: [],
   sellers: [],
@@ -21,13 +22,13 @@ function reducer(state = initialState, action) {
       return { ...state, searchQuery: action.q };
 
     case 'MINIMUM-PRICE':
-      return { ...state, min: action.price };
+      return { ...state, minPrice: action.price };
 
     case 'MAXIMUM-PRICE':
-      return { ...state, max: action.price };
+      return { ...state, maxPrice: action.price };
 
     case 'CLEAR':
-      return { ...state, searchQuery: '' };
+      return { ...state, searchQuery: '', maxPrice: '' };
 
     case 'ADVANCED-SEARCH':
       return { ...state, advancedSearch: !state.advancedSearch };
@@ -40,6 +41,9 @@ function reducer(state = initialState, action) {
 
     case 'SET_SELLERS':
       return { ...state, sellers: action.sellers };
+
+    case 'SET_CATEGORY':
+      return { ...state, category: action.category };
 
     default:
       return state;

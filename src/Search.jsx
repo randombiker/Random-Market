@@ -2,19 +2,17 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 class UnconnectedSearch extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
+  componentDidMount() {}
 
   handleQuery = (evt) => {
     this.props.dispatch({ type: 'QUERY', q: evt.target.value });
   };
   handleMinimumPrice = (evt) => {
-    const price = parseInt(evt.target.value) || 0;
+    const price = evt.target.value;
     this.props.dispatch({ type: 'MINIMUM-PRICE', price: price });
   };
   handleMaximumPrice = (evt) => {
-    const price = parseInt(evt.target.value) || 0;
+    const price = evt.target.value;
     this.props.dispatch({ type: 'MAXIMUM-PRICE', price: price });
   };
 
@@ -72,13 +70,12 @@ class UnconnectedSearch extends Component {
     );
   }
 }
-const mapStateToProps = (st) => {
+const mapStateToProps = (state) => {
   return {
-    query: st.searchQuery,
-    minPrice: st.min,
-    maxPrice: st.max,
-    inStock: st.inStock,
-    advancedSearch: st.advancedSearch,
+    query: state.searchQuery,
+    minPrice: state.minPrice,
+    maxPrice: state.maxPrice,
+    advancedSearch: state.advancedSearch,
   };
 };
 let Search = connect(mapStateToProps)(UnconnectedSearch);

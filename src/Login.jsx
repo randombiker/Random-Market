@@ -44,7 +44,7 @@ class UnconnectedLogin extends Component {
   render = () => {
     return (
       <div className="container auth-card">
-        <form id="signup" onSubmit={this.handleSubmit}>
+        <form className="signup" onSubmit={this.handleSubmit}>
           <div className="sep" />
           <div className="inputs">
             <input

@@ -1,9 +1,8 @@
 body {
   background: url('/images/background.jpg');
-  background-color: #ff880098;
+  background-color: #e2d7a9;
   background-repeat: no-repeat;
   background-size: cover;
-
   margin: 0px;
 }
 
@@ -14,8 +13,8 @@ header.nav {
 .logosize {
   display: flex;
   flex-wrap: wrap;
-  margin-right: 350px;
-  margin-left: 20px;
+  margin-right: 200px;
+  margin-left: 90px;
 }
 
 .overlay {
@@ -35,7 +34,7 @@ header.nav {
   right: 200px;
 }
 
-@media screen and (max-width: 866px) {
+@media screen and (max-width: 1020px) {
   .logosize {
     display: none;
   }
@@ -47,6 +46,8 @@ header.nav {
     width: 100%;
     margin: 0;
     padding: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
   }
   .topnav input[type='text'] {
     border: 1px solid #ccc;
@@ -62,6 +63,12 @@ header.nav {
     margin-top: 10%;
 
     margin-right: 13%;
+  }
+
+  .searchArea {
+    width: 195px;
+    height: 50px;
+    margin-left: 100px;
   }
 }
 
@@ -86,17 +93,6 @@ header.nav {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.coupon {
-  position: relative;
-  align-self: flex-start;
-  background-color: black;
-  color: white;
-  width: 100%;
-  height: 20px;
-  text-align: center;
-  font-size: 15px;
-}
-
 .wrapper {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -113,8 +109,6 @@ header.nav {
   grid-row: 2 / 5;
 }
 
-/* //for the signup/login form */
-
 .container {
   width: 200px;
   max-width: 200px;
@@ -125,7 +119,7 @@ header.nav {
   margin-top: 50px;
 }
 
-#signup {
+.signup {
   padding: 0px 25px 25px;
   box-shadow: 0px 0px 0px 5px rgba(255, 255, 255, 0.4),
     0px 4px 20px rgba(0, 0, 0, 0.33);
@@ -134,35 +128,35 @@ header.nav {
   position: static;
 }
 
-#signup .header {
+.signup .header {
   margin-bottom: 20px;
 }
 
-#signup .header h3 {
+.signup .header h3 {
   color: #333333;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-#signup .header p {
+.signup .header p {
   color: #8f8f8f;
   font-size: 14px;
   font-weight: 300;
 }
 
-#signup .sep {
+.signup .sep {
   height: 1px;
   background: #e8e8e8;
   width: 200px;
   margin: 0px -25px;
 }
 
-#signup .inputs {
+.signup .inputs {
   margin-top: 25px;
 }
 
-#signup .inputs label {
+.signup .inputs label {
   color: #8f8f8f;
   font-size: 12px;
   font-weight: 300;
@@ -170,8 +164,6 @@ header.nav {
   margin-bottom: 7px;
   display: block;
 }
-
-/* sellform */
 
 .sellForm {
   padding: 25px;
@@ -198,7 +190,8 @@ header.nav {
 input[type='textarea'] {
   resize: vertical;
   background: #8f8f8f33;
-  font-size: 0.8rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
   border-radius: 3px;
   border: none;
   padding: 13px 10px;
@@ -212,10 +205,11 @@ input[type='textarea'] {
   color: whitesmoke;
 }
 
-#signup .inputs input[type='text'],
+.signup .inputs input[type='text'],
 input[type='password'] {
   background: #8f8f8f33;
-  font-size: 0.8rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
   border-radius: 3px;
   border: none;
   padding: 13px 10px;
@@ -225,7 +219,7 @@ input[type='password'] {
   clear: both;
 }
 
-#signup .inputs input[type='text']:focus,
+.signup .inputs input[type='text']:focus,
 input[type='password']:focus {
   background: #8f8f8f04;
   box-shadow: 0px 0px 0px 3px #a1a0a5, inset 0px 2px 3px rgba(0, 0, 0, 0.2),
@@ -233,13 +227,13 @@ input[type='password']:focus {
   outline: none;
 }
 
-#signup .inputs label.terms {
+.signup .inputs label.terms {
   float: left;
   font-size: 14px;
   font-style: italic;
 }
 
-#signup .inputs #submit {
+.signup .inputs #submit {
   width: 100%;
   margin-top: 20px;
   padding: 15px 0;
@@ -259,8 +253,6 @@ input[type='password']:focus {
   position: static;
   clear: both;
 }
-
-/* signup/login button */
 
 .myButton {
   margin-left: 7px;
@@ -291,27 +283,81 @@ input[type='password']:focus {
 .myButton:focus {
   outline: 0;
 }
-/* items render */
 
 .card {
-  /* Add shadows to create the "card" effect */
-
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  border-radius: 6px;
 }
 
-/* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Add some padding inside the card container */
 .container1 {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding: 2px 16px;
-  margin-top: 4%;
+  margin-top: 40px;
+}
+
+.container2 {
+  width: 100px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 52px;
+  margin-left: 20px;
+  margin-right: 50px;
+  padding: 30px 16px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: grey;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  background-color: hsla(10, 18%, 93%, 0.3);
+}
+
+.container2:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.category-btn {
+  border: none;
+  background: none;
+}
+
+.categories {
+  margin-bottom: 10px;
+  color: #133d68;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container2 img {
+  object-fit: cover;
+  height: 40px;
+  width: 65px;
+}
+
+.categoriesTitle {
+  margin-bottom: 10px;
+  padding-bottom: 30px;
+  color: #133d68;
+  font-size: 14px;
+  text-decoration: underline;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#categoriesSpecial {
+  margin-bottom: 20px;
+}
+
+.parentContainer {
+  display: flex;
 }
 
 .center {
@@ -320,11 +366,13 @@ input[type='password']:focus {
   height: 200px;
   border: 3px solid #a1a0a5;
   padding: 10px;
-  color: rgb(255, 115, 0);
+  color: #ff7300;
   background-color: hsla(10, 18%, 93%, 0.3);
 }
 
-/* search buton styling */
+.center img {
+  margin-bottom: 20px;
+}
 
 .textarea {
   padding: 5px 5px 5px;
@@ -337,6 +385,7 @@ input[type='password']:focus {
   float: right;
   margin-right: 20px;
 }
+
 input[type='text'],
 textarea {
   background-color: #8f8f8f;
@@ -349,7 +398,6 @@ textarea {
   width: 195px;
   height: 50px;
 }
-/* upload button style */
 
 .upload-btn-wrapper {
   position: relative;
@@ -420,6 +468,32 @@ span {
   outline: 0;
 }
 
+select {
+  background: #8f8f8f33;
+  border: 1px solid #cfcfcf;
+  vertical-align: middle;
+  /* background-color: transparent; */
+  height: 42px;
+  width: 220px;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  border: none;
+  padding: 13px 10px;
+
+  margin-bottom: 20px;
+  box-shadow: inset 0px 2px 3px rgba(0, 0, 0, 0.1);
+  clear: both;
+}
+option {
+  background-color: #fef5e6;
+  border-bottom: 1px solid #ebdac0;
+  border-right: 1px solid #d6bb86;
+  border-left: 1px solid #d6bb86;
+}
+option:hover {
+  cursor: pointer;
+}
+
 .inventory {
   color: rgb(4, 117, 4);
   margin-bottom: 10px;
@@ -432,4 +506,10 @@ span {
   background: linear-gradient(to right, #c3c9ce75, #323d47);
   position: fixed;
   bottom: 0;
+}
+
+.select {
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
 }

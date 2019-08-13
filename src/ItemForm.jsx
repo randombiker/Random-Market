@@ -7,7 +7,7 @@ class ItemForm extends Component {
 
     this.state = {
       image: null,
-      name: '',
+      category: '',
       description: '',
       price: '',
       inventory: '',
@@ -17,7 +17,7 @@ class ItemForm extends Component {
     const formData = new FormData();
 
     formData.append('image', this.state.image);
-    formData.append('name', this.state.name);
+    formData.append('category', this.state.category);
     formData.append('description', this.state.description);
     formData.append('price', this.state.price);
     formData.append('inventory', this.state.inventory);
@@ -36,8 +36,8 @@ class ItemForm extends Component {
     this.props.history.replace('/');
   };
 
-  handleNameChange = (evt) => {
-    this.setState({ name: evt.target.value });
+  handleCategoryChange = (evt) => {
+    this.setState({ category: evt.target.value.toLowerCase() });
   };
 
   handleDescriptionChange = (evt) => {
@@ -68,13 +68,22 @@ class ItemForm extends Component {
         <form onSubmit={this.handleSubmit} className="inputs">
           <div>
             <label>
-              <input
-                type="text"
-                placeholder="Name"
-                onChange={this.handleNameChange}
-                value={this.state.name}
+              <select
+                className="select"
+                type="select"
+                onChange={this.handleCategoryChange}
+                value={this.state.category}
                 required
-              />
+              >
+                <option value="" disabled selected>
+                  Select the category
+                </option>
+                <option value="car">Car</option>
+                <option value="moto">Moto</option>
+                <option value="house">House</option>
+                <option value="electro">Electro</option>
+                <option value="other">Other</option>
+              </select>
             </label>
           </div>
           <div>
