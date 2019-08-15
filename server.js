@@ -44,7 +44,8 @@ app.post('/checkout', upload.none(), (req, res) => {
   if (itemBought) {
     itemBought.inventory -= 1;
   }
-  res.send(JSON.stringify({ success: true }));
+
+  res.send(JSON.stringify({ success: true, item: itemBought }));
 });
 
 app.post('/logout', (req, res) => {
@@ -91,10 +92,7 @@ app.post('/signup', upload.none(), (req, res) => {
 });
 
 app.post('/newListing', upload.single('image'), (req, res) => {
-  const newId = () => {
-    return Math.floor(Math.random() * 100000000);
-  };
-  let id = newId();
+  const id = generateId();
   const sessionId = req.cookies.sid;
   const username = sessions[sessionId];
   const description = req.body.description;

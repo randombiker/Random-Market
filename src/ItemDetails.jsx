@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import Item from './Item.jsx';
 
@@ -6,10 +7,14 @@ class TakeMoney extends React.Component {
   onToken = async (token) => {
     const formData = new FormData();
     formData.append('item', JSON.stringify(this.props.item));
-    fetch('/checkout', {
+    const response = await fetch('/checkout', {
       method: 'POST',
       body: formData,
     });
+    const body = await response.json();
+    if (body.success) {
+      this.props.handleCheckout(body.item);
+    }
   };
 
   render() {
@@ -41,7 +46,7 @@ class TakeMoney extends React.Component {
 }
 
 function ItemDetails(props) {
-  const { item } = props;
+  const { item, handleCheckout } = props;
 
   return item ? (
     <>
@@ -54,11 +59,15 @@ function ItemDetails(props) {
           showDetailsLink={false}
         />
       </div>
-      <div className="inventory">Inventory: {item.inventory} </div>
-      <div>Description: {item.description}</div>
+      <div
+        className={`inventory ${item.inventory <= 0 ? 'inventory-sold' : ''}`}
+      >
+        Inventory: {item.inventory}{' '}
+      </div>
+      <div> {item.description}</div>
       <div>
         {' '}
-        <TakeMoney item={item} />
+        <TakeMoney item={item} handleCheckout={handleCheckout} />
       </div>
     </>
   ) : (
@@ -66,4 +75,11 @@ function ItemDetails(props) {
   );
 }
 
-export { ItemDetails, TakeMoney };
+const mapDispatchToProps = (dispatch) => ({
+  handleCheckout: (item) => dispatch({ type: 'UPDATE_ITEM', item: item }),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(ItemDetails);

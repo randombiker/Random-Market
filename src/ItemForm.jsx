@@ -33,6 +33,7 @@ class ItemForm extends Component {
       item: responseBody.item,
     });
 
+    debugger;
     this.props.history.replace('/');
   };
 

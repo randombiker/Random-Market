@@ -6,7 +6,6 @@ const initialState = {
   searchQuery: '',
   minPrice: '',
   maxPrice: '',
-  category: '',
   advancedSearch: false,
   items: [],
   sellers: [],
@@ -36,14 +35,17 @@ function reducer(state = initialState, action) {
     case 'SET_ITEMS':
       return { ...state, items: action.items };
 
+    case 'UPDATE_ITEM':
+      const items = [...state.items];
+      const itemIdx = items.findIndex((item) => item.id === action.item.id);
+      items[itemIdx] = action.item;
+      return { ...state, items: items };
+
     case 'ADD_ITEM':
       return { ...state, items: state.items.concat(action.item) };
 
     case 'SET_SELLERS':
       return { ...state, sellers: action.sellers };
-
-    case 'SET_CATEGORY':
-      return { ...state, category: action.category };
 
     default:
       return state;

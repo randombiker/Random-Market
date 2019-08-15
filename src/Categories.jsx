@@ -1,54 +1,33 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Categories extends Component {
-  handleCategory = (category) => {
-    this.props.dispatch({
-      type: 'SET_CATEGORY',
-      category: category,
-    });
-  };
   render() {
     return (
       <>
         <div className="container2">
           <div className="categoriesTitle">Categories</div>
-          <button
-            className="category-btn"
-            onClick={() => this.handleCategory('car')}
-          >
-            <img src="./auto.png" />
-          </button>
+          <Link className="category-btn" to="/categories/car">
+            <img src="/auto.png" />
+          </Link>
           <div className="categories">Car</div>
-          <button
-            className="category-btn"
-            onClick={() => this.handleCategory('moto')}
-          >
-            <img src="./moto.png" />
-          </button>
+          <Link className="category-btn" to="/categories/moto">
+            <img src="/moto.png" />
+          </Link>
           <div className="categories">Moto</div>
-          <button
-            className="category-btn"
-            onClick={() => this.handleCategory('electro')}
-          >
-            <img src="./electro.png" />
-          </button>
+          <Link className="category-btn" to="/categories/electro">
+            <img src="/electro.png" />
+          </Link>
           <div className="categories">Electro</div>
-          <button
-            className="category-btn"
-            onClick={() => this.handleCategory('house')}
-          >
-            <img src="./home.png" />
-          </button>
+          <Link className="category-btn" to="/categories/house">
+            <img src="/home.png" />
+          </Link>
           <div className="categories" id="categoriesSpecial">
             House
           </div>
-          <button
-            className="category-btn"
-            onClick={() => this.handleCategory('other')}
-          >
-            <img src="./other.png" />
-          </button>
+          <Link className="category-btn" to="/categories/other">
+            <img src="/other.png" />
+          </Link>
 
           <div className="categories">Other</div>
         </div>
@@ -57,4 +36,4 @@ class Categories extends Component {
   }
 }
 
-export default connect()(Categories);
+export default Categories;

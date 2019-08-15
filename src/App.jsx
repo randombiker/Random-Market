@@ -5,7 +5,7 @@ import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import Navbar from './Navbar.jsx';
 import Item from './Item.jsx';
-import { ItemDetails } from './ItemDetails.jsx';
+import ItemDetails from './ItemDetails.jsx';
 import ItemForm from './ItemForm.jsx';
 import Footer from './Footer.jsx';
 import Categories from './Categories.jsx';
@@ -18,14 +18,33 @@ class App extends Component {
     };
   }
 
-  renderHome = () => {
+  async componentDidMount() {
+    const sessionResponse = await fetch('/session');
+    const body = await sessionResponse.json();
+
+    if (body.success) {
+      this.props.dispatch({ type: 'LOGIN_SUCCESS', username: body.username });
+    }
+
+    const itemsResponse = await fetch('/items');
+    const itemsBody = await itemsResponse.json();
+    this.setState({ isLoading: false });
+    if (itemsBody.success) {
+      this.props.dispatch({ type: 'SET_ITEMS', items: itemsBody.items });
+    }
+  }
+
+  renderHome = (routerData) => {
+    const category = routerData.match.params.category;
     const filteredItems = this.props.items.filter((item) => {
       return (
-        item.category.toLowerCase().includes(this.props.query.toLowerCase()) &&
+        item.description
+          .toLowerCase()
+          .includes(this.props.query.toLowerCase()) &&
         item.price >= Number(this.props.minPrice) &&
         (this.props.maxPrice === '' ||
           item.price <= Number(this.props.maxPrice)) &&
-        (this.props.category === '' || item.category === this.props.category)
+        (!category || item.category === category)
       );
     });
     return (
@@ -55,29 +74,13 @@ class App extends Component {
 
   renderItemDetails = (routerData) => {
     const itemId = routerData.match.params.itemId;
-    const item = this.props.items.find((item) => item.id === Number(itemId));
+    const item = this.props.items.find((item) => item.id === itemId);
     return (
       <div className="sellForm">
         <ItemDetails item={item} />
       </div>
     );
   };
-
-  async componentDidMount() {
-    const sessionResponse = await fetch('/session');
-    const body = await sessionResponse.json();
-
-    if (body.success) {
-      this.props.dispatch({ type: 'LOGIN_SUCCESS', username: body.username });
-    }
-
-    const itemsResponse = await fetch('/items');
-    const itemsBody = await itemsResponse.json();
-    this.setState({ isLoading: false });
-    if (itemsBody.success) {
-      this.props.dispatch({ type: 'SET_ITEMS', items: itemsBody.items });
-    }
-  }
 
   render() {
     if (this.state.isLoading) {
@@ -101,6 +104,11 @@ class App extends Component {
                 path="/details/:itemId"
                 render={this.renderItemDetails}
               />
+              <Route
+                exact={true}
+                path="/categories/:category"
+                render={this.renderHome}
+              />
             </>
           ) : (
             <>
@@ -122,7 +130,6 @@ const mapStateToProps = (state) => {
     items: state.items,
     minPrice: state.minPrice,
     maxPrice: state.maxPrice,
-    category: state.category,
   };
 };
 export default connect(mapStateToProps)(App);
