@@ -1,5 +1,1 @@
-To start the server, run `nodemon server.js`
-
-Modify the `server.js` file to add endpoints
-
-The frontend code goes in the `/src` directory
+A Marketplace with basic functionality built using React, Redux, Express and Node. Payment API integrated. Users can buy items or upload items to sell.
